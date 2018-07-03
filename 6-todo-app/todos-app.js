@@ -22,7 +22,8 @@ const todos = [
 ];
 
 const filters = {
-    searchText: ''
+    searchText: '',
+    hideCompleted: false
 };
 
 const renderTodos = function(todos, filters){
@@ -72,8 +73,19 @@ document.querySelector('#new-todo').addEventListener('submit', function(e) {
     renderTodos(todos, filters);
 
     // 5. Clear input value
-    e.target.elements.text.value = ''
-})
+    e.target.elements.text.value = '';
+});
+
+document.querySelector('#hide-completed').addEventListener('change', function(e){
+    filters.hideCompleted = e.target.checked;
+    renderTodos(todos, filters);
+});
+
+
+// 1. Create a checkbox and setup event listener -> 'Hide completed"
+// 2. Create new hideCompleted filter (default false)
+// 3. Update hideCompleted an rerender list on checkbox change
+// 4. Setup renderTools to remove completed items
 
 
 
