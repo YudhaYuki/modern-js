@@ -13,28 +13,6 @@ const notes = [
     }
 ];
 
-// Query and remove
-// const p = document.querySelector('p');
-// p.remove();
-
-// Query All and remove
-// const ps = document.querySelectorAll('p');
-
-// ps.forEach(function(p) {
-    // p.remove()
-//     p.textContent = '*****'
-// })
-
-
-// Add new element
-// const newParagraph = document.createElement('p');
-// newParagraph.textContent = 'This is a new element from javaScript';
-// document.querySelector('body').appendChild(newParagraph);
-
-// document.querySelector('#remove-all').addEventListener('click', function() {
-//     console.log(`Remove all notes`);
-// });
-
 const filters = {
     searchText: ''
 };
@@ -59,19 +37,11 @@ document.querySelector('#create-note').addEventListener('click', function(e) {
     e.target.textContent = 'The button was click !';
 });
 
-// document.querySelector('#remove-all').addEventListener('click', function(e){
-//     document.querySelectorAll('.note').forEach(function(note) {
-//         note.remove();
-//     })
-// });
-
 document.querySelector('#search-text').addEventListener('input', function(e) {
     filters.searchText = e.target.value;
     renderNotes(notes, filters);
 });
 
-document.querySelector('#name-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    console.log(e.target.elements.firstName.value);
-    e.target.elements.firstName.value = '';
+document.querySelector('#for-fun').addEventListener('change', function(e) {
+    console.log(e.target.checked);
 });

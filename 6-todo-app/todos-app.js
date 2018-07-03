@@ -21,19 +21,6 @@ const todos = [
     }
 ];
 
-// const paragraphs = document.querySelectorAll('p');
-
-// paragraphs.forEach(function(paragraph) {
-//     if (paragraph.textContent.includes('the')) {
-//         paragraph.remove();
-//     }
-// });
-
-
-// You have 2 todos left (p element)
-// Add a p for each todo above (use text value)
-
-
 const filters = {
     searchText: ''
 };
@@ -65,28 +52,6 @@ renderTodos(todos, filters);
 
 
 
-// const incompleteTodos = todos.filter(function (todo) {
-//     return !todo.completed
-// });
-
-// const summary = document.createElement('h2');
-// summary.textContent = `You have ${incompleteTodos.length} to do left`;
-// document.querySelector('body').appendChild(summary);
-
-
-// todos.forEach(function(todo) {
-//     const p = document.createElement('p');
-//     p.textContent = todo.text;
-//     document.querySelector('body').appendChild(p);
-// });
-
-// document.querySelector('#add-todo').addEventListener('click', function(e) {
-//     console.log('Add a new todo...');
-// });
-
-// document.querySelector('#new-todo-text').addEventListener('input', function(e) {
-//     console.log(e.target.value);
-// });
 
 document.querySelector('#search-text').addEventListener('input', function(e) {
     filters.searchText = e.target.value;
