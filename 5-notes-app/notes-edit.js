@@ -1,6 +1,12 @@
+// 1. Add a DOM element between the title and body inputs (every span);
+// 2. Set text value: last edited 4 hours ago
+// 3. Update value on title/body/storage change
+
+
 const titleElement = document.querySelector('#note-title');
 const bodyElement = document.querySelector('#note-body');
 const removeElement = document.querySelector('#remove-note');
+const dateElement = document.querySelector('#last-edited');
 
 const noteId = location.hash.substring(1);
 let notes = getSavedNotes();
@@ -14,16 +20,19 @@ if (note === undefined) {
 
 titleElement.value = note.title;
 bodyElement.value = note.body;
+dateElement.textContent = generateLastEdited(note.updatedAt);
 
 titleElement.addEventListener('input', function(e) {
     note.title = e.target.value;
     note.updatedAt = moment().valueOf();
+    dateElement.textContent = generateLastEdited(note.updatedAt);    
     saveNotes(notes);
 });
 
 bodyElement.addEventListener('input', function(e) {
     note.body = e.target.value;
     note.updatedAt = moment().valueOf();
+    dateElement.textContent = generateLastEdited(note.updatedAt);    
     saveNotes(notes);
 })
 
@@ -47,5 +56,6 @@ window.addEventListener('storage', function (e) {
         
         titleElement.value = note.title;
         bodyElement.value = note.body;
+        dateElement.textContent = generateLastEdited(note.updatedAt);        
     }
 });
