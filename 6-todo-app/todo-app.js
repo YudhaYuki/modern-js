@@ -23,6 +23,7 @@ document.querySelector('#new-todo').addEventListener('submit', function(e) {
 
     // 2. Add new item to the todos array with that text data (completed value of false)
     todos.push({
+        id: uuidv4(),
         text: e.target.elements.text.value,
         completed: false
     });
