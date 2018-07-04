@@ -24,17 +24,14 @@ const renderTodos = function(todos, filters){
     const filteredTodos = todos.filter(function (todo) {
         const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
         const hideCompletedMatch = !filters.hideCompleted || !todo.completed;
-        debugger;
+
         return searchTextMatch && hideCompletedMatch;
     });
 
-    debugger;
 
     const incompleteTodos = filteredTodos.filter(function (todo) {
         return !todo.completed
     });
-
-    debugger;    
 
     document.querySelector('#todos').innerHTML = '';
     
@@ -49,9 +46,29 @@ const renderTodos = function(todos, filters){
 // Get the DOM elements for an individual note
 // generateTodoDOM
 const generateTodoDOM = function (todo) {
-    const p = document.createElement('p');
-    p.textContent = todo.text;
-    return p;
+    const todoEl = document.createElement('div');  
+    const checkbox = document.createElement('input');
+    const todoText = document.createElement('span');
+    const removeButton = document.createElement('button');
+
+    
+    // Setup todo checkbox
+    checkbox.setAttribute('type', 'checkbox');
+    todoEl.appendChild(checkbox);
+
+    // Setup the todo text
+    todoText.textContent = todo.text;
+    todoEl.appendChild(todoText);
+
+    // Setup the remove button
+    removeButton.textContent = 'x';
+    todoEl.appendChild(removeButton);
+    
+    return todoEl ;
+
+    // const p = document.createElement('p');
+    // p.textContent = todo.text;
+    // return p;
 }
 
 // Get the DOM elements for list summary
