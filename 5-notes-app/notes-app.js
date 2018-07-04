@@ -1,4 +1,4 @@
-const notes = getSavedNotes();
+let notes = getSavedNotes();
 
 const filters = {
     searchText: ''
@@ -25,4 +25,16 @@ document.querySelector('#search-text').addEventListener('input', function(e) {
 
 document.querySelector('#filter-by').addEventListener('change', function(e){
     console.log(e.target.value)
+});
+
+
+window.addEventListener('storage', function(e) {
+    if (e.key === 'notes') {
+        // parse the new data and update notes
+        notes = JSON.parse(e.newValue);
+        renderNotes(notes, filters);
+
+        // Render the notes
+        
+    };
 });
