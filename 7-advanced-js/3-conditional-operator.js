@@ -25,3 +25,11 @@ const showErrorPage = () => {
 const message = myAge >= 21 ? showPage() : showErrorPage();
 console.log(message);
 
+
+const team = ['tyler', 'porter', 'Yudha'];
+
+// 1. print "Team size: 3" if less than or equal to 4;
+// 2. Print "Too mnay people on your team" otherwise;
+
+console.log(team.length <= 4 ? `Team size is ${team.length}` : `Too many people in your team`);
+
