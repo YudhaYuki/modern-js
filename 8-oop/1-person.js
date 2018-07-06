@@ -1,11 +1,18 @@
-const Person = function (firstName, lastName, age) {
+const Person = function (firstName, lastName, age, likes = []) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.age = age;
+    this.likes = likes;
 }
 
 Person.prototype.getBio = function() {
-    return `${this.firstName} is ${this.age}.`;
+    let bio = `${this.firstName} is ${this.age}.`;
+
+    this.likes.forEach((like) => {
+        bio += ` ${this.firstName} likes ${like}.`;
+    });
+
+    return bio;
 }
 
 Person.prototype.location = 'Indonesia';
@@ -16,11 +23,11 @@ Person.prototype.setName = function(fullName) {
     this.lastName = names[1];
 }
 
-const me = new Person('Yudha', 'Yuki', 36);
+const me = new Person('Yudha', 'Yuki', 27, ['Learning', 'Cooking']);
 me.setName('Alexis Turner');
 // console.log(me.location);
 console.log(me.getBio());
 
 
-const personTwo = new Person('Rika', 'Yuki', 27);
+const personTwo = new Person('Rika', 'Yuki', 36);
 console.log(personTwo.getBio());
