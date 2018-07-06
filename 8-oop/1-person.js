@@ -1,3 +1,5 @@
+// Prototypal Iheritance
+
 const Person = function (firstName, lastName, age, likes = []) {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -15,7 +17,7 @@ Person.prototype.getBio = function() {
     return bio;
 }
 
-Person.prototype.location = 'Indonesia';
+// Person.prototype.location = 'Indonesia';
 
 Person.prototype.setName = function(fullName) {
     const names = fullName.split(' ');
@@ -24,10 +26,20 @@ Person.prototype.setName = function(fullName) {
 }
 
 const me = new Person('Yudha', 'Yuki', 27, ['Learning', 'Cooking']);
+
+// me.getBio = function () {
+//     return 'This is fake!';
+// }
+
 me.setName('Alexis Turner');
 // console.log(me.location);
 console.log(me.getBio());
 
 
 const personTwo = new Person('Rika', 'Yuki', 36);
+
+// Person.prototype.getBio = function () {
+//     return 'Testing Testing';
+// }
+
 console.log(personTwo.getBio());
