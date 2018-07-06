@@ -7,7 +7,7 @@
 const Hangman = function (word, remainingGuesses) {
     this.word = word.toLowerCase().split('');
     this.remainingGuesses = remainingGuesses;
-    this.guessedLetters = ['c', 'e'];
+    this.guessedLetters = [];
 };
 
 Hangman.prototype.getPuzzle = function () {
@@ -40,18 +40,13 @@ Hangman.prototype.makeGuess = function (guess) {
 
 const game1 = new Hangman('Cat', 2);
 
-// Guess c, t, z
-game1.makeGuess('c');
-game1.makeGuess('t')
-game1.makeGuess('z');
-
 console.log(game1.getPuzzle()); // C*t
 console.log(game1.remainingGuesses);   // print remaining guesses (Should be 1)
 
-
-
-const game2 = new Hangman('New Jersey', 4);
-game2.makeGuess('w'); // Guess w
-console.log(game2.getPuzzle()); // **w ******
-
+window.addEventListener('keypress', function (e) {
+    const guess = String.fromCharCode(e.charCode)
+    game1.makeGuess(guess);
+    console.log(game1.getPuzzle());
+    console.log(game1.remainingGuesses);
+})
 
