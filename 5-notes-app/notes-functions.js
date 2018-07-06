@@ -1,3 +1,14 @@
+'use strict';
+
+let data;
+
+const processData = () => {
+    data = '123894650'
+};
+
+processData();
+console.log(data);
+
 // Read exisiting notes from localStorage
 const getSavedNotes = () => {
     const notesJSON = localStorage.getItem('notes');
