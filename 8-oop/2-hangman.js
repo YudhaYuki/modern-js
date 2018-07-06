@@ -1,16 +1,34 @@
-// 1. Create a constructor function for the hangman game
-// 2. Setup two attributes. One for the word itself, another for the number of guesses allowed
-// 3. Create two instances of it and print both to the console
+// 1. Setup the word instance property as an array of lower case letters
+// 2. Setup another instance property to store guessed letters
+// 3. Create a method that gives you the word puzzle back
+
+// No guesses? -> ***
+// Guessed "c", "b" and "t"? -> c * t
 
 
 const Hangman = function (word, remainingGuesses) {
-    this.word = word;
+    this.word = word.toLowerCase().split('');
     this.remainingGuesses = remainingGuesses;
+    this.guessedLetters = ['c', 'e'];
 };
 
-const gameOne = new Hangman('Cat', 2);
-console.log(gameOne);
+Hangman.prototype.getPuzzle = function () {
+    let puzzle = '';
 
-const gameTwo = new Hangman('Paris', 3);
-console.log(gameTwo);
+    this.word.forEach((letter) => {
+        if (this.guessedLetters.includes(letter) || letter === ' ') {
+            puzzle += letter;
+        } else {
+            puzzle += '*';
+        }
+    });
+
+    return puzzle;
+};
+
+const game1 = new Hangman('Cat', 2);
+console.log(game1.getPuzzle());
+
+const game2 = new Hangman('New Jersey', 4);
+console.log(game2.getPuzzle());
 
