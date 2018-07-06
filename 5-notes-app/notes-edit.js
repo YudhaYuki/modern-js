@@ -1,7 +1,4 @@
-// 1. Add a DOM element between the title and body inputs (every span);
-// 2. Set text value: last edited 4 hours ago
-// 3. Update value on title/body/storage change
-
+'use strict';
 
 const titleElement = document.querySelector('#note-title');
 const bodyElement = document.querySelector('#note-body');

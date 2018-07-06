@@ -1,13 +1,15 @@
 'use strict';
 
-let data;
+// const public = true;
+// const isPublic = true;
+// let data;
 
-const processData = () => {
-    data = '123894650'
-};
+// const processData = () => {
+//     data = '123894650'
+// };
 
-processData();
-console.log(data);
+// processData();
+// console.log(data);
 
 // Read exisiting notes from localStorage
 const getSavedNotes = () => {
