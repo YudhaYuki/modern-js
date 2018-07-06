@@ -5,23 +5,33 @@
 
 const calculateGrade = function (studentScore, maxScore) {
 
-    const percent = (studentScore / maxScore) * 100;
-    let letterGrade = '';
-
-    if (percent >= 90) {
-        letterGrade = 'A';
-    } else if (percent >= 80) {
-        letterGrade = 'B';
-    } else if (percent >= 70) {
-        letterGrade = 'C';
-    } else if (percent >= 60) {
-        letterGrade = 'D';
+    if (typeof studentScore === 'number' && typeof maxScore === 'number') {
+        const percent = (studentScore / maxScore) * 100;
+        let letterGrade = '';
+    
+        if (percent >= 90) {
+            letterGrade = 'A';
+        } else if (percent >= 80) {
+            letterGrade = 'B';
+        } else if (percent >= 70) {
+            letterGrade = 'C';
+        } else if (percent >= 60) {
+            letterGrade = 'D';
+        } else {
+            letterGrade = 'E';
+        }
+    
+        return `You got a ${letterGrade} (${percent}%)`;
     } else {
-        letterGrade = 'E';
+        throw Error ('Please provide number only !')
     }
 
-    return `You got a ${letterGrade} (${percent}%)`;
 } 
 
-const result = calculateGrade(9, 20);
-console.log(result);
+try {
+    const result = calculateGrade(9, true);
+    console.log(result);
+} catch (e) {
+    // console.log('Please provie numbers');
+    console.log(e.message);
+}
