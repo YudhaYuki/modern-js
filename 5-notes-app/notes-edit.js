@@ -32,7 +32,10 @@ bodyElement.addEventListener('input', (e) => {
     note.updatedAt = moment().valueOf();
     dateElement.textContent = generateLastEdited(note.updatedAt);    
     saveNotes(notes);
-})
+});
+
+
+
 
 removeElement.addEventListener('click', (e) => {
     removeNote(note.id);
