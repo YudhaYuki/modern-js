@@ -1,3 +1,8 @@
+// 1. Covert "getStatusMessage" to a custom getter for "statusMessage";
+// 2. Convert "getPuzzle" to a custom getter for "puzzle"
+// 3. Change usage in app.js
+
+
 class Hangman {
     constructor (word, remainingGuesses) {
         this.word = word.toLowerCase().split('');
@@ -18,7 +23,7 @@ class Hangman {
         }
     }
 
-    getStatusMessage() {
+    get statusMessage() {
         if (this.status === 'playing') {
             return `Guesses left: ${this.remainingGuesses}`;
         } else if (this.status === 'failed') {
@@ -28,7 +33,7 @@ class Hangman {
         }
     }
 
-    getPuzzle() {
+    get puzzle() {
         let puzzle = '';
         
         this.word.forEach((letter) => {
