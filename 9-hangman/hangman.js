@@ -1,14 +1,9 @@
-// 1. Setup new "status" property with initial value of "playing"
-// 2. Create method for recalculating status to "playing", "finish", or "failed"
-// 3. Call that method after a guess is processed
-// 4. Use console.log to print the status
+// 1. Disable new guesses unless "playing"
+// 2. Setup a new method to get back a status message
 
-// Start the game and see "playing"
-// Make two inccorect guesses to see "failed"
-// Refresh the browser and guess "c", "a", and "t" to see "finished"
-
-
-
+// Playing -> Guesses Left: 3
+// Failed -> Nice try! The word was "Cat"
+// Finished -> Great Work! You guessed the word !
 
 const Hangman = function (word, remainingGuesses) {
     this.word = word.toLowerCase().split('');
@@ -19,26 +14,7 @@ const Hangman = function (word, remainingGuesses) {
 
 Hangman.prototype.calculateStatus = function () {
     
-    const finished = this.word.every((letter) => {
-        return this.guessedLetters.includes(letter);
-    });
-
-
-    // const lettersUnguessed = this.word.filter((letter) => {
-    //     return !this.guessedLetters.includes(letter);
-    // });
-    // const finished = lettersUnguessed.length === 0;
-
-
-    // let finished = true;
-
-    // this.word.forEach((letter) => {
-    //     if (this.guessesLetters.includes(letter)) {
-            
-    //     } else {
-    //         finished = false;
-    //     }
-    // });
+    const finished = this.word.every((letter) => this.guessedLetters.includes(letter));
 
     if (this.remainingGuesses === 0) {
         this.status = 'failed';
@@ -46,6 +22,16 @@ Hangman.prototype.calculateStatus = function () {
         this.status = 'finished';
     } else {
         this.status = 'playing';
+    }
+}
+
+Hangman.prototype.getStatusMessage = function () {
+    if (this.status === 'playing') {
+        return `Guesses left: ${this.remainingGuesses}`;
+    } else if (this.status === 'failed') {
+        return `Nice try! The word was "${this.word.join('')}".`;
+    } else {
+        return 'Great work, you guessed the work !'
     }
 }
 
@@ -67,6 +53,10 @@ Hangman.prototype.makeGuess = function (guess) {
     guess = guess.toLowerCase();
     const isUnique = !this.guessedLetters.includes(guess);
     const isBadGuess = !this.word.includes(guess);
+
+    if (this.status !== 'playing') {
+
+    }
 
     if (isUnique) {
         this.guessedLetters.push(guess);
