@@ -1,7 +1,6 @@
-// Create a method for making a guess
-// 1. Should accept a character for guessing
-// 2. Should add unique guesses to list of guesses
-// 3. Should decrement the guesse left if a unique guess isn't a match
+// 1. Display the puzzle to the browser instead of console
+// 2. Display the guesses left to the browser instead of console
+// 3. Separate the Hangman definition from the rest of the app code (use app.js)
 
 
 const Hangman = function (word, remainingGuesses) {
@@ -38,15 +37,17 @@ Hangman.prototype.makeGuess = function (guess) {
     }
 }
 
+const puzzleEl = document.querySelector('#puzzle');
+const guessesEl = document.querySelector('#guesses');
 const game1 = new Hangman('Cat', 2);
 
-console.log(game1.getPuzzle()); // C*t
-console.log(game1.remainingGuesses);   // print remaining guesses (Should be 1)
+puzzleEl.textContent = game1.getPuzzle();
+guessesEl.textContent = game1.remainingGuesses;
 
 window.addEventListener('keypress', function (e) {
     const guess = String.fromCharCode(e.charCode)
     game1.makeGuess(guess);
-    console.log(game1.getPuzzle());
-    console.log(game1.remainingGuesses);
+    puzzleEl.textContent = game1.getPuzzle();
+    guessesEl.textContent = game1.remainingGuesses;
 })
 
