@@ -19,19 +19,12 @@ getPuzzle('1').then((puzzle) => {
     console.log(`Error: ${err}`);
 });
 
-getCountry('ID', (error, country) => {
-    if (error) {
-        console.log(`Error: ${error}`)
-    } else {
-        console.log(`Country name: ${country.name}`)
-    }
+
+// 1. Covert getCountry to return a new promise
+// 2. Call getCountry and use then to pritn country name or the error
+
+getCountry('ID').then((country) => {
+    console.log(country.name)
+}, (err) => {
+    console.log(`Error: ${err}`)
 });
-
-
-
-// Making an HTTP request
-
-// 1. Create a new function for getting country details
-// 2. Call it with two arguments: country code, the callback function
-// 3. Make the HTTP request and call the callback with country information
-// 4. Use the callback to print the country name
