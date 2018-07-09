@@ -9,10 +9,18 @@ const getPuzzle = async (wordCount) => {
     }
 }
 
+// Create a new function called getCurrentCountry
+// Should return a promise that resolves the country object for your current location
+// Use async/await for the new function
 
-// 1. Convert getCountry to an async function that uses await
-// 2. Convert getLocation to an async function that uses await
+const getCurrentCountry = async () => {
+    // const location = await getLocation();
+    // const country = await getCountry(location.country);
+    // return country;
 
+    const location = await getLocation();
+    return getCountry(location.country);
+}
 
 const getCountry = async (countryCode) => {
     const response = await fetch('http://restcountries.eu/rest/v2/all');
@@ -24,8 +32,6 @@ const getCountry = async (countryCode) => {
         throw new Error('Unable to fetch the country');
     }
 }
-
-
 
 
 const getLocation = async () => {
