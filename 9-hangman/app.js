@@ -19,11 +19,16 @@ getPuzzle('2').then((puzzle) => {
 });
 
 
-// getCountry('ID').then((country) => {
-//     console.log(country.name)
-// }, (err) => {
-//     console.log(`Error: ${err}`)
-// });
+// 1. Covert getCountry to use fetch and return a promise
+// 2. Make sure getCountry still resolves with the country that matches
+// 3. Change getCountry usage to use catch
+
+
+getCountry('ID').then((country) => {
+    console.log(country.name)
+}).catch((err) => {
+    console.log(`Error: ${err}`)
+});
 
 
 
