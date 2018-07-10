@@ -9,8 +9,20 @@ window.addEventListener('keypress', (e) => {
 });
 
 const render = () => {
-    puzzleEl.textContent = game1.puzzle;
+    puzzleEl.innerHTML = '';
     guessesEl.textContent = game1.statusMessage;   
+
+
+    // game1.puzzle -> "*** co**";
+    // 1. For each character i the string, add a span into #puzzle
+    // 2. The spans text should just be the letter itself
+
+    game1.puzzle.split('').forEach((letter) => {
+        const letterEl = document.createElement('span'); 
+        letterEl.textContent = letter;
+        puzzleEl.appendChild(letterEl);
+    });
+
 }
 
 const startGame = async () => {
