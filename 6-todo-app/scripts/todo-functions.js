@@ -38,6 +38,7 @@ const toggleTodo = (id) => {
 // Render application todos based on filters
 // renderTodos
 const renderTodos = (todos, filters) => {
+    const todoEl = document.querySelector('#todos');
     const filteredTodos = todos.filter( (todo) => {
         const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
         const hideCompletedMatch = !filters.hideCompleted || !todo.completed;
@@ -48,13 +49,27 @@ const renderTodos = (todos, filters) => {
 
     const incompleteTodos = filteredTodos.filter( (todo) => !todo.completed );
 
-    document.querySelector('#todos').innerHTML = '';
+    todoEl.innerHTML = '';
     
-    document.querySelector('#todos').appendChild(generateSummaryDOM(incompleteTodos));
+    todoEl.appendChild(generateSummaryDOM(incompleteTodos));
+
+
+    if (filteredTodos.length > 0) {
+        filteredTodos.forEach((todo) => {
+            todoEl.appendChild(generateTodoDOM(todo));
+        });
+    } else {
+        const messageEl = document.createElement('p');
+        messageEl.classList.add('empty-message');
+        messageEl.textContent = 'No todos to show';
+        todoEl.appendChild(messageEl);
+    }
     
-    filteredTodos.forEach((todo) => {
-        document.querySelector('#todos').appendChild(generateTodoDOM(todo));
-    });
+
+    // If todos to show, render them
+    // Else, p with class "empty-message" and message "No todos to show"
+
+
 };
 
 
@@ -109,6 +124,3 @@ const generateSummaryDOM = (incompleteTodos) => {
     summary.textContent = `You have ${incompleteTodos.length} todo${plural} left`;
     return summary;
 }
-
-// 1. Add "list-title" class
-// 2. Pluralize (todos) unless you only have one (todo);
