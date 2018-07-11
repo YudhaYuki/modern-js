@@ -31,9 +31,6 @@ bodyElement.addEventListener('input', (e) => {
     saveNotes(notes);
 });
 
-
-
-
 removeElement.addEventListener('click', (e) => {
     removeNote(note.id);
     saveNotes(notes);
