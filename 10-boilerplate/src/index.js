@@ -1,11 +1,6 @@
-const name = 'Yuki'
+// import './utilities';
+import { add, name } from './utilities';
+
+console.log('index.js');
+console.log(add(32, 1));
 console.log(name)
-
-class Hangman {
-    myMethod() {
-        return 'Testing'
-    }
-}
-
-const hangman = new Hangman();
-console.log(hangman.myMethod());
